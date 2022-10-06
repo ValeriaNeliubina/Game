@@ -1,0 +1,15 @@
+[gd_resource type="TileSet" load_steps=3 format=2]
+
+[ext_resource path="res://Characters/Billy/pngwing.com.png" type="Texture" id=1]
+[ext_resource path="res://Characters/Character.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+id = "billy"
+display_name = "Billy"
+bio = "Fill this with the character's complete bio. Supports BBCode."
+age = 5
+default_image = "neutral"
+images = {
+"neutral": ExtResource( 1 )
+}

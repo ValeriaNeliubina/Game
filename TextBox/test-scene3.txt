@@ -1,0 +1,27 @@
+mark jump_location
+
+background mountain fade_in
+
+billy neutral enter left "Здарова!"
+
+mark lets_play_game
+
+billy "Сыграем в игру?"
+
+choice:
+	"Да":
+		billy "Играй!"
+		game start
+	"Нет":
+		billy "Не, так не пойдет!"
+		jump lets_play_game
+
+game end
+
+if game_summary:
+	billy "Повезло-повезло!"
+else:
+	billy "Не повезло!"
+	jump lets_play_game
+
+transition fade_out
