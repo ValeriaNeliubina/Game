@@ -2,7 +2,7 @@ mark jump_location
 
 background mountain fade_in
 
-billy neutral enter left "Здарова!"
+billy neutral enter right "Здарова!"
 
 mark lets_play_game
 
@@ -11,7 +11,7 @@ billy "Сыграем в игру?"
 choice:
 	"Да":
 		billy "Играй!"
-		game start
+		game start 20
 	"Нет":
 		billy "Не, так не пойдет!"
 		jump lets_play_game

@@ -52,7 +52,7 @@ func _play_scene(index: int) -> void:
 	_scene_player.run_scene(0)
 
 func _connect_signals() -> void:
-	get_node("Node2D/WinButton").connect("button_pressed", self, "_on_game_end")
+	#get_node("Node2D/WinButton").connect("button_pressed", self, "_on_game_end")
 	get_node("Node2D/LoseButton").connect("button_pressed", self, "_on_game_end")
 	get_node("Node2D").connect("game_finished", self, "game_finished")
 
@@ -77,19 +77,17 @@ func game_finished(result):
 
 func _on_game_end(code) -> void:
 	Variables.add_variable("game_summary", code)
-	_open_game("close", _key)
+	_open_game("close", _key, 0)
 
-func _open_game(mode, nextKey) -> void:
+func _open_game(mode, nextKey, win_score) -> void:
 	if gameNode == null:
 		return
 	_key = nextKey
 	
 	if mode == "start":
-		# gameNode.visible = true;
-		gameNode.start_game(10);
-		# emit_signal("start_game", 0);
+		gameNode.start_game(win_score);
+		_scene_player.hide_text_box();
 	else:
-		# var score = emit_signal("end_game");
-		# gameNode.visible = false;
 		var score = gameNode.end_game();
+		_scene_player.show_text_box();
 		_scene_player.run_scene(_key)

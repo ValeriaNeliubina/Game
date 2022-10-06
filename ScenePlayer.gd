@@ -72,7 +72,7 @@ func run_scene(key) -> void:
 				key = node.next
 				
 		elif node is SceneTranspiler.GameCommandNode:
-			_start_game(node.gameMode, node.next)
+			_start_game(node.gameMode, node.next, node.win_score)
 			return
 
 		# Choices.
@@ -129,8 +129,8 @@ func run_scene(key) -> void:
 	emit_signal("scene_finished")
 
 
-func _start_game(mode: String, nextKey) -> void:
-	emit_signal("open_game", mode, nextKey)
+func _start_game(mode: String, nextKey, win_score) -> void:
+	emit_signal("open_game", mode, nextKey, win_score)
 
 func load_scene(dialogue: SceneTranspiler.DialogueTree) -> void:
 	# The main script
@@ -157,3 +157,11 @@ func _store_scene_data(data: Dictionary, path: String) -> void:
 	file.open(path, File.WRITE)
 	file.store_string(var2str(_scene_data))
 	file.close()
+
+func show_text_box():
+	yield(_text_box.fade_in_async(), "completed");
+	_text_box.visible = true;
+
+func hide_text_box():
+	yield(_text_box.fade_out_async(), "completed");
+	_text_box.visible = false;

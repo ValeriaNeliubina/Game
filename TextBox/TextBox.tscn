@@ -200,9 +200,6 @@ mouse_filter = 2
 theme = ExtResource( 4 )
 texture = ExtResource( 5 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SkipButton" parent="." instance=ExtResource( 9 )]
 margin_left = -140.0
@@ -253,9 +250,6 @@ bbcode_text = "Text body"
 meta_underlined = false
 text = "Text body"
 scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BlinkingArrow" parent="RichTextLabel" instance=ExtResource( 2 )]
 anchor_left = 1.0
@@ -269,8 +263,10 @@ margin_bottom = 1.0
 mouse_filter = 1
 
 [node name="ChoiceSelector" parent="." instance=ExtResource( 3 )]
-margin_left = 657.0
-margin_right = -658.0
+margin_left = 150.0
+margin_top = -450.0
+margin_right = -1164.99
+margin_bottom = -542.0
 mouse_filter = 2
 
 [node name="Tween" type="Tween" parent="."]

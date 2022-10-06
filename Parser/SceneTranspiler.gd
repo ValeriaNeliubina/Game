@@ -156,9 +156,11 @@ class GameCommandNode:
 	extends BaseNode
 	
 	var gameMode: String = ""
+	var win_score: int = 0
 	
-	func _init(next: int, mode: String).(next) -> void:
-		gameMode = mode
+	func _init(next: int, mode: String, win_score:int).(next) -> void:
+		self.gameMode = mode
+		self.win_score = win_score
 		self.next = next
 
 ## Node type for a command that will break out of any running code block.
@@ -360,7 +362,10 @@ func _transpile_command(dialogue_tree: DialogueTree, expression: SceneParser.Bas
 		_unresolved_jump_nodes = temp
 		
 	elif expression.value == SceneLexer.BUILT_IN_COMMANDS.GAME:
-		command_node = GameCommandNode.new(dialogue_tree.index + 1, expression.arguments[0].value)
+		var win_score = 0;
+		if (expression.arguments.size() > 1):
+			win_score = len(expression.arguments[1].value);
+		command_node = GameCommandNode.new(dialogue_tree.index + 1, expression.arguments[0].value, win_score)
 	
 	else:
 		push_error("Unrecognized command type `%s`" % expression.value)

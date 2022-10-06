@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Game/Scripts/grid.gd" type="Script" id=2]
@@ -6,39 +6,19 @@
 [ext_resource path="res://Game/Scripts/Button.gd" type="Script" id=4]
 [ext_resource path="res://Game/Art/Bottom UI v 2.png" type="Texture" id=5]
 [ext_resource path="res://Game/Scripts/Game.gd" type="Script" id=6]
+[ext_resource path="res://Theme/montserrat_extrabold.tres" type="DynamicFont" id=7]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
-scripts = [ "res://Parser/test-scene3.tex" ]
+scripts = [ "res://Parser/test-scene3.txt" ]
 
 [node name="Node2D" type="Node2D" parent="."]
 visible = false
 script = ExtResource( 6 )
 
-[node name="WinButton" type="Sprite" parent="Node2D"]
-position = Vector2( 563, 135 )
-scale = Vector2( 0.628472, 1.3913 )
-z_index = 4002
-texture = ExtResource( 5 )
-script = ExtResource( 4 )
-code = "true"
-
-[node name="WinLabel" type="Label" parent="Node2D/WinButton"]
-modulate = Color( 0, 0, 0, 1 )
-self_modulate = Color( 0, 0, 0, 1 )
-anchor_right = 1.0
-anchor_bottom = 0.819
-margin_left = -11.1382
-margin_top = -11.5
-margin_right = -296.138
-margin_bottom = 11.111
-text = "Win
-
-"
-max_lines_visible = 3
-
 [node name="LoseButton" type="Sprite" parent="Node2D"]
-position = Vector2( 1390, 146 )
+self_modulate = Color( 1, 1, 1, 0.494118 )
+position = Vector2( 847, 137 )
 scale = Vector2( 0.604167, 1.22826 )
 z_index = 4002
 texture = ExtResource( 5 )
@@ -48,21 +28,21 @@ code = "false"
 [node name="LoseButton" type="Label" parent="Node2D/LoseButton"]
 modulate = Color( 0, 0, 0, 1 )
 self_modulate = Color( 0, 0, 0, 1 )
-margin_left = -47.9998
-margin_top = -12.2124
-margin_right = 269.0
-margin_bottom = 35.7876
+margin_left = -275.0
+margin_top = -33.0
+margin_right = 258.0
+margin_bottom = 37.0
 size_flags_stretch_ratio = 1.87
-text = "Lose
-
-"
+custom_fonts/font = ExtResource( 7 )
+text = "Закончить"
+align = 1
 
 [node name="grid" type="Node2D" parent="Node2D"]
 z_index = 4000
 script = ExtResource( 2 )
 width = 8
 height = 10
-xStart = 735
+xStart = 485
 yStart = 850
 offset = 64
 background = ExtResource( 3 )
@@ -79,10 +59,11 @@ one_shot = true
 z_index = 1004
 
 [node name="ScoreLabel" type="Label" parent="Node2D/ScoreNode"]
-margin_left = 842.0
-margin_top = 77.0
-margin_right = 1156.0
-margin_bottom = 205.0
+margin_left = 396.0
+margin_top = 74.0
+margin_right = 710.0
+margin_bottom = 202.0
+custom_fonts/font = ExtResource( 7 )
 text = "Score"
 align = 1
 valign = 1
