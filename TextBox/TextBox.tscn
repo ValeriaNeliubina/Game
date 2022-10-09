@@ -263,11 +263,14 @@ margin_bottom = 1.0
 mouse_filter = 1
 
 [node name="ChoiceSelector" parent="." instance=ExtResource( 3 )]
-margin_left = 150.0
-margin_top = -450.0
-margin_right = -1164.99
-margin_bottom = -542.0
+margin_left = 122.0
+margin_top = 40.0
+margin_right = -75.0
+margin_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
+alignment = 1
 
 [node name="Tween" type="Tween" parent="."]
 

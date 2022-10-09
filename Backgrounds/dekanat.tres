@@ -1,0 +1,10 @@
+[gd_resource type="VisualScriptResourcePath" load_steps=3 format=2]
+
+[ext_resource path="res://Backgrounds/Background.gd" type="Script" id=1]
+[ext_resource path="res://Backgrounds/Images/_DSC0142.JPG" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+id = "dekanat"
+display_name = "Деканат"
+texture = ExtResource( 2 )

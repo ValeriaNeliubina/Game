@@ -4,6 +4,7 @@ extends Node
 const SAVE_FILE_LOCATION := "user://2DVisualNovelDemo.save"
 
 var data: Dictionary = {}
+var karma: int = 0;
 
 func add_variable(name: String, value) -> void:
 	#var save_file: File = File.new()
@@ -54,3 +55,14 @@ func _evaluate(input):
 	var obj = Reference.new()
 	obj.set_script(script)
 	return obj.eval()
+
+func add_karma(count):
+	karma += count;
+
+func subtract_karma(count):
+	karma -= count;
+	if karma < 0:
+		karma = 0;
+
+func set_karma(count):
+	karma = count;

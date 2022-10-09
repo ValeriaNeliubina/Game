@@ -162,6 +162,23 @@ class GameCommandNode:
 		self.gameMode = mode
 		self.win_score = win_score
 		self.next = next
+	
+class KarmaCommandNode:
+	extends BaseNode
+	
+	var karma_operation: String = ""
+	var karma_count: int = 0
+	
+	func _init(next: int, operation: String, count: int).(next) -> void:
+		self.next = next
+		self.karma_operation = operation
+		self.karma_count = count
+
+class ClearCommandNode:
+	extends BaseNode
+	
+	func _init(next: int).(next) -> void:
+		self.next = next
 
 ## Node type for a command that will break out of any running code block.
 class PassCommandNode:
@@ -367,6 +384,14 @@ func _transpile_command(dialogue_tree: DialogueTree, expression: SceneParser.Bas
 			win_score = len(expression.arguments[1].value);
 		command_node = GameCommandNode.new(dialogue_tree.index + 1, expression.arguments[0].value, win_score)
 	
+	elif expression.value == SceneLexer.BUILT_IN_COMMANDS.KARMA:
+		var operation = expression.arguments[0].value
+		var count = 0
+		if (expression.arguments.size() > 1):
+			count = len(expression.arguments[1].value)
+		command_node = KarmaCommandNode.new(dialogue_tree.index + 1, operation, count)
+	elif expression.value == SceneLexer.BUILT_IN_COMMANDS.CLEAR:
+		command_node = ClearCommandNode.new(dialogue_tree.index + 1)
 	else:
 		push_error("Unrecognized command type `%s`" % expression.value)
 

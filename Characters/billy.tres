@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource( 2 )
 id = "billy"
-display_name = "Billy"
+display_name = "Пшеничникова"
 bio = "Fill this with the character's complete bio. Supports BBCode."
 age = 5
 default_image = "neutral"

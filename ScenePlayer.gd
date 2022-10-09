@@ -48,8 +48,13 @@ func run_scene(key) -> void:
 
 		# Normal text reply.
 		if "line" in node:
-			_text_box.display(node.line, character.display_name)
-			yield(_text_box, "next_requested")
+			if (node.line == "skip"):
+				_text_box.display("", character.display_name)
+				key = node.next
+				continue
+			else:
+				_text_box.display(node.line, character.display_name)
+				yield(_text_box, "next_requested")
 			key = node.next
 
 		# Transition animation.
@@ -72,8 +77,26 @@ func run_scene(key) -> void:
 				key = node.next
 				
 		elif node is SceneTranspiler.GameCommandNode:
-			_start_game(node.gameMode, node.next, node.win_score)
+			var score = node.win_score
+			#if node.line:
+			#	score = int(node.line)
+			_start_game(node.gameMode, node.next, score)
 			return
+			
+		elif node is SceneTranspiler.KarmaCommandNode:
+			if node.karma_operation == "add":
+				Variables.add_karma(node.karma_count)
+			elif node.karma_operation == "subtract":
+				Variables.subtract_karma(node.karma_count)
+			elif node.karma_operation == "set":
+				Variables.set_karma(node.karma_count)
+			
+			key = node.next
+			
+		elif node is SceneTranspiler.ClearCommandNode:
+			_character_displayer._ready()
+			_text_box._ready()
+			key = node.next
 
 		# Choices.
 		elif node is SceneTranspiler.ChoiceTreeNode:

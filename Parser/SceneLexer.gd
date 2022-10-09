@@ -11,7 +11,9 @@ const BUILT_IN_COMMANDS := {
 	JUMP = "jump",
 	TRANSITION = "transition",
 	SET = "set",
-	GAME = "game"
+	GAME = "game",
+	KARMA = "karma",
+	CLEAR = "clear"
 }
 const CONDITIONAL_STATEMENTS := ["if", "elif", "else"]
 const BOOLEAN_OPERATORS := ["and", "or", "not"]
