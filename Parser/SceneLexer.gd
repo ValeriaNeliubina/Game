@@ -13,7 +13,8 @@ const BUILT_IN_COMMANDS := {
 	SET = "set",
 	GAME = "game",
 	KARMA = "karma",
-	CLEAR = "clear"
+	CLEAR = "clear",
+	AUDIO = "audio"
 }
 const CONDITIONAL_STATEMENTS := ["if", "elif", "else"]
 const BOOLEAN_OPERATORS := ["and", "or", "not"]

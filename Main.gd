@@ -13,11 +13,16 @@ var lexer := SceneLexer.new()
 var parser := SceneParser.new()
 var transpiler := SceneTranspiler.new()
 
+var _ambientPlayer: AudioStreamPlayer
+var _soundPlayer: AudioStreamPlayer
+
 onready var gameNode: Node2D = get_node("Node2D")
 var inGame: bool = false
 
 func _ready() -> void:
 	_connect_signals()
+	_ambientPlayer = get_node("AmbientPlayer")
+	_soundPlayer = get_node("SoundPlayer")
 	
 	if not scripts.empty():
 		for script in scripts:
@@ -49,6 +54,7 @@ func _play_scene(index: int) -> void:
 	_scene_player.connect("scene_finished", self, "_on_ScenePlayer_scene_finished")
 	_scene_player.connect("restart_requested", self, "_on_ScenePlayer_restart_requested")
 	_scene_player.connect("open_game", self, "_open_game")
+	_scene_player.connect("audio_event", self, "_audio_event")
 	_scene_player.run_scene(0)
 
 func _connect_signals() -> void:
@@ -77,6 +83,7 @@ func game_finished(result):
 
 func _on_game_end(code) -> void:
 	Variables.add_variable("game_summary", code)
+	_audio_event("sound", false, "nea.wav")
 	_open_game("close", _key, 0)
 
 func _open_game(mode, nextKey, win_score) -> void:
@@ -91,3 +98,25 @@ func _open_game(mode, nextKey, win_score) -> void:
 		var score = gameNode.end_game();
 		_scene_player.show_text_box();
 		_scene_player.run_scene(_key)
+
+func _audio_event(environment, state, track):
+	var player
+	if environment == "sound":
+		player = _soundPlayer
+	elif environment == "ambient":
+		player = _ambientPlayer
+	else:
+		return
+	
+	if !state:
+		player.stop()
+		return
+	
+	if track == "":
+		return
+		
+	var stream = load("res://Sounds/" + track)
+	player.stream = stream
+	
+	if !player.playing:
+		player.play()

@@ -1,6 +1,6 @@
 extends Node2D
 
-signal game_finished;
+signal game_finished
 
 onready var _grid = get_node("grid");
 onready var _scoreLabel = get_node("ScoreNode/ScoreLabel");
@@ -30,3 +30,5 @@ func start_game(win_score: int):
 func end_game() -> int:
 	visible = false;
 	return _score;
+
+

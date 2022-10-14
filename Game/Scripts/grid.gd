@@ -25,6 +25,8 @@ preload("res://Game/Scenes/Green Diamond.tscn"),
 preload("res://Game/Scenes/Blue Cloud.tscn")
 ]
 
+var _player: AudioStreamPlayer
+
 var all_pieces;
 
 var first_touch;
@@ -34,6 +36,7 @@ var controlling = false;
 export (PackedScene) var background;
 
 func _ready():
+	_player = get_node("GamePlayer")
 	randomize();
 	all_pieces = make_array();
 	setup_board();
@@ -163,6 +166,7 @@ func destroy_matched():
 	collapse_columns(destroyed);
 
 func collapse_columns(destroyed: bool):
+	play_sound()
 	for i in width:
 		for j in height:
 			if(all_pieces[i][j] == null):
@@ -219,3 +223,7 @@ func _on_find_matches_timeout():
 func _on_refill_timer_timeout():
 	refill_columns();
 
+func play_sound() -> void:
+	if !_player.playing:
+		_player.stream = load("res://Sounds/nea.wav")
+		_player.play()

@@ -6,6 +6,7 @@ signal scene_finished
 signal restart_requested
 signal transition_finished
 signal open_game
+signal audio_event
 
 const KEY_END_OF_SCENE := -1
 const KEY_RESTART_SCENE := -2
@@ -83,6 +84,10 @@ func run_scene(key) -> void:
 			_start_game(node.gameMode, node.next, score)
 			return
 			
+		elif node is SceneTranspiler.AudioCommandNode:
+			emit_signal("audio_event", node.environment, node.state, node.track)
+			key = node.next
+		
 		elif node is SceneTranspiler.KarmaCommandNode:
 			if node.karma_operation == "add":
 				Variables.add_karma(node.karma_count)

@@ -180,6 +180,19 @@ class ClearCommandNode:
 	func _init(next: int).(next) -> void:
 		self.next = next
 
+class AudioCommandNode:
+	extends BaseNode
+	
+	var track: String = ""
+	var state: bool = false
+	var environment: String = "sound"
+	
+	func _init(next: int, environment: String, state: bool, track: String).(next) -> void:
+		self.environment = environment
+		self.state = state
+		self.track = track
+		self.next = next
+
 ## Node type for a command that will break out of any running code block.
 class PassCommandNode:
 	extends BaseNode
@@ -381,14 +394,26 @@ func _transpile_command(dialogue_tree: DialogueTree, expression: SceneParser.Bas
 	elif expression.value == SceneLexer.BUILT_IN_COMMANDS.GAME:
 		var win_score = 0;
 		if (expression.arguments.size() > 1):
-			win_score = len(expression.arguments[1].value);
+			win_score = int(expression.arguments[1].value);
 		command_node = GameCommandNode.new(dialogue_tree.index + 1, expression.arguments[0].value, win_score)
-	
+		
+	elif expression.value == SceneLexer.BUILT_IN_COMMANDS.AUDIO:
+		var environment = expression.arguments[0].value
+		var state = expression.arguments[1].value
+		var track = expression.arguments[2].value
+		
+		var audioState = false
+		
+		if (state == "play"):
+			audioState = true
+		
+		command_node = AudioCommandNode.new(dialogue_tree.index + 1, environment, audioState, track)
+		
 	elif expression.value == SceneLexer.BUILT_IN_COMMANDS.KARMA:
 		var operation = expression.arguments[0].value
 		var count = 0
 		if (expression.arguments.size() > 1):
-			count = len(expression.arguments[1].value)
+			count = int(expression.arguments[1].value)
 		command_node = KarmaCommandNode.new(dialogue_tree.index + 1, operation, count)
 	elif expression.value == SceneLexer.BUILT_IN_COMMANDS.CLEAR:
 		command_node = ClearCommandNode.new(dialogue_tree.index + 1)

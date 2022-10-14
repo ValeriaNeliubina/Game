@@ -8,9 +8,9 @@ dani happy "Да забей. Потом сходишь, пойдем лучше 
 
 choice:
 	"Нет. Потом будет поздно, и так мало времени осталось":
-		karma add aaa
+		karma add "50"
 	"Ладно, пошли. Потом заберу":
-		karma subtract aaa
+		karma subtract "50"
 		jump day_end
 
 transition fade_out
@@ -24,14 +24,14 @@ billy neutrl enter right "Здравствуйте, конечно. Скажит
 
 mark before_game_start
 
-game start aaaaaaaaaa
+game start "20"
 
 if game_summary:
-	karma add aaaaa
+	karma add "50"
 else:
 	choice:
 		"Еще раз":
-			karma subtract aaa
+			karma subtract "50"
 			jump before_game_start
 		"Я отчисляюсь":
 			clear
@@ -39,15 +39,20 @@ else:
 
 transition fade_out
 
+
 clear
 
 background igppa fade_in
+
+audio sound play "povezlo-povezlo.wav"
 
 "Смотрит ИГППА"
 
 transition fade_out
 
 clear
+
+audio ambient play "polskaya-korova.ogg"
 
 background dekanat fade_in
 
@@ -60,12 +65,14 @@ dani happy "А пошли лучше в клуб! Расслабишься и у
 
 choice:
 	"Пошли. Мне и правда нужен отдых":
-		karma add aaaaa
+		karma add "50"
 		dani happy "Наконец то мы с тобой отдохнем!"
 	"Нет. В понедельник уже надо сдавать, так что лучше сейчас начну готовиться":
-		karma subtract aaaaa
+		karma subtract "50"
 		dani angry "Ладно. В этот раз отдохну без тебя."
 
 mark day_end
+
+audio ambient stop "polskaya-korova.ogg"
 
 transition fade_out
