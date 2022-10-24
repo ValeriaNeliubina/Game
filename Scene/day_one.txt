@@ -39,7 +39,6 @@ else:
 
 transition fade_out
 
-
 clear
 
 background igppa fade_in

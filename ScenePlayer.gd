@@ -24,7 +24,6 @@ onready var _character_displayer := $CharacterDisplayer
 onready var _anim_player: AnimationPlayer = $FadeAnimationPlayer
 onready var _background := $Background
 
-
 func run_scene(key) -> void:
 	while key != KEY_END_OF_SCENE:
 		var node: SceneTranspiler.BaseNode = _scene_data[key]
@@ -79,14 +78,13 @@ func run_scene(key) -> void:
 				
 		elif node is SceneTranspiler.GameCommandNode:
 			var score = node.win_score
-			#if node.line:
-			#	score = int(node.line)
 			_start_game(node.gameMode, node.next, score)
 			return
 			
 		elif node is SceneTranspiler.AudioCommandNode:
 			emit_signal("audio_event", node.environment, node.state, node.track)
 			key = node.next
+			continue
 		
 		elif node is SceneTranspiler.KarmaCommandNode:
 			if node.karma_operation == "add":
@@ -97,11 +95,13 @@ func run_scene(key) -> void:
 				Variables.set_karma(node.karma_count)
 			
 			key = node.next
+			continue
 			
 		elif node is SceneTranspiler.ClearCommandNode:
 			_character_displayer._ready()
 			_text_box._ready()
 			key = node.next
+			continue
 
 		# Choices.
 		elif node is SceneTranspiler.ChoiceTreeNode:

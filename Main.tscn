@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Game/Scripts/grid.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Game/Art/Bottom UI v 2.png" type="Texture" id=5]
 [ext_resource path="res://Game/Scripts/Game.gd" type="Script" id=6]
 [ext_resource path="res://Theme/montserrat_extrabold.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Game/Art/Pink Circle.png" type="Texture" id=8]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -69,6 +70,45 @@ custom_fonts/font = ExtResource( 7 )
 text = "Score"
 align = 1
 valign = 1
+
+[node name="StepNode" type="Node2D" parent="Node2D"]
+position = Vector2( 194, 104 )
+z_index = 1004
+
+[node name="StepLabel" type="Label" parent="Node2D/StepNode"]
+margin_left = 1164.0
+margin_top = -9.0
+margin_right = 1296.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 7 )
+text = "Step"
+
+[node name="ColorNode" type="Node2D" parent="Node2D"]
+z_index = 1004
+
+[node name="YellowLabel" type="Label" parent="Node2D/ColorNode"]
+margin_left = 158.0
+margin_top = 254.0
+margin_right = 315.0
+margin_bottom = 309.0
+custom_fonts/font = ExtResource( 7 )
+text = "Харизма:"
+
+[node name="ArtifactNode" type="Sprite" parent="Node2D"]
+position = Vector2( 1690, 416 )
+z_index = 1004
+texture = ExtResource( 8 )
+script = ExtResource( 4 )
+code = "artifact"
+
+[node name="ArtifactLabel" type="Label" parent="Node2D/ArtifactNode"]
+margin_left = -128.0
+margin_top = 78.0
+margin_right = 159.0
+margin_bottom = 191.0
+custom_fonts/font = ExtResource( 7 )
+text = "Артефакт"
+align = 1
 
 [node name="AmbientPlayer" type="AudioStreamPlayer" parent="."]
 

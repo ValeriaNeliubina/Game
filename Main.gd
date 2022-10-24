@@ -83,7 +83,6 @@ func game_finished(result):
 
 func _on_game_end(code) -> void:
 	Variables.add_variable("game_summary", code)
-	_audio_event("sound", false, "nea.wav")
 	_open_game("close", _key, 0)
 
 func _open_game(mode, nextKey, win_score) -> void:

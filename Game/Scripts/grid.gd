@@ -8,6 +8,7 @@ export (int) var yStart;
 export (int) var offset;
 
 signal destroyed;
+signal step;
 
 # Timers
 onready var find_matches_timer = get_node("find_matches");
@@ -21,11 +22,13 @@ var possible_pieces = [preload("res://Game/Scenes/Yellow Pentagon.tscn"),
 preload("res://Game/Scenes/Teal Star.tscn"),
 preload("res://Game/Scenes/Red Circle.tscn"),
 preload("res://Game/Scenes/Orange Triangle.tscn"),
-preload("res://Game/Scenes/Green Diamond.tscn"),
-preload("res://Game/Scenes/Blue Cloud.tscn")
+preload("res://Game/Scenes/Shvax Cloud.tscn"),
+preload("res://Game/Scenes/Green Diamond.tscn")
 ]
 
 var _player: AudioStreamPlayer
+
+var _steps: int = 0
 
 var all_pieces;
 
@@ -118,6 +121,8 @@ func swap_pieces(column, row, direction):
 	find_matches_timer.start();
 
 func touch_difference(first_touch, final_touch):
+	_steps += 1;
+	emit_signal("step", 1);
 	var difference = final_touch - first_touch;
 	if(abs(difference.x) > abs(difference.y)):
 		if(difference.x > 0):
@@ -159,14 +164,17 @@ func destroy_matched():
 	for i in width:
 		for j in height:
 			if(all_pieces[i][j].is_matched):
+				var color = all_pieces[i][j].color;
+				process_color(color);
 				all_pieces[i][j].queue_free();
 				all_pieces[i][j] = null;
-				emit_signal("destroyed", 1);
+				emit_signal("destroyed", 1, color);
 				destroyed = true
 	collapse_columns(destroyed);
 
 func collapse_columns(destroyed: bool):
-	play_sound()
+	if destroyed:
+		play_sound()
 	for i in width:
 		for j in height:
 			if(all_pieces[i][j] == null):
@@ -225,5 +233,18 @@ func _on_refill_timer_timeout():
 
 func play_sound() -> void:
 	if !_player.playing:
-		_player.stream = load("res://Sounds/nea.wav")
+		_player.stream = load("res://Sounds/es-minus-ehuuu.wav")
 		_player.play()
+
+func process_color(color) -> void:
+	print(color);
+
+func destroy_row(row: int) -> void:
+	if (row < 0 or row >= height):
+		return
+	
+	for i in range(0, width, 1):
+		if (all_pieces[i][row] != null):
+			all_pieces[i][row].is_matched = true;
+	
+	destroy_matched();
