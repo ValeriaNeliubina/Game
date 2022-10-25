@@ -15,7 +15,8 @@ var _yellow: int = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_connect_signals();
+	_connect_signals()
+	update_artifact_visible()
 
 func _connect_signals():
 	_grid.connect("destroyed", self, "add_score")
@@ -24,23 +25,32 @@ func _connect_signals():
 
 func add_score(count, color):
 	_score += count;
-	_scoreLabel.text = String(_score);
+	_scoreLabel.text = "Счет: " + String(_score);
 	
 	if (color == "Charisma"):
 		_yellow += count;
-		_yellowLabel.text = "Харизма: " + String(_yellow);
+		update_artifact_visible()
+
+func update_artifact_visible() -> void:
+	_yellowLabel.text = "Харизма: " + String(_yellow);
+	if (_yellow >= 5):
+		_artifact.visible = true
+	else:
+		_artifact.visible = false
 
 func add_step(count):
 	_step += count;
 	_stepLabel.text = String(_win_score - _step);
 	if (_step >= _win_score):
+		yield(get_node("grid/refill_timer"), "timeout")
 		emit_signal("game_finished", true);
 
 func start_game(win_score: int) -> void:
 	_score = 0;
 	_step = 0;
+	_yellow = 0;
 	_win_score = win_score;
-	_scoreLabel.text = String(_score);
+	_scoreLabel.text = "Счет: " + String(_score);
 	_stepLabel.text = String(_win_score - _step);
 	visible = true;
 
@@ -53,6 +63,7 @@ func _button_pressed(code: String) -> void:
 	if (code != "artifact"):
 		return
 	
-	if (_yellow > 5):
+	if (_yellow >= 5):
 		add_score(-5, "Charisma")
 		_grid.destroy_row(0);
+		update_artifact_visible()
