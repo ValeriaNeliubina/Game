@@ -154,8 +154,26 @@ func run_scene(key) -> void:
 			key = node.next
 
 	_character_displayer.hide()
-	emit_signal("scene_finished")
 
+
+# test Progress file
+	Progress.next_part()
+	Progress.to_save()
+	Progress.to_load()
+	Progress.add_score(5)
+	Progress.to_save()
+	Progress.to_load()
+	Progress.add_artifact("fig")
+	Progress.add_score(-3)
+	Progress.next_part()
+	Progress.to_save()
+	Progress.to_load()
+	Progress.drop_artifact("fig")
+	Progress.add_artifact("milk")
+	Progress.to_save()
+	Progress.to_load()
+	emit_signal("scene_finished")
+# end test
 
 func _start_game(mode: String, nextKey, win_score) -> void:
 	emit_signal("open_game", mode, nextKey, win_score)

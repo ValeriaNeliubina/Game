@@ -70,6 +70,7 @@ config/icon="res://Characters/icon.png"
 
 ResourceDB="*res://Autoloads/ResourceDB.gd"
 Variables="*res://Autoloads/Variables.gd"
+Progress="*res://Save/Progress.gd"
 
 [debug]
 
