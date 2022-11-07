@@ -3,6 +3,7 @@
 [ext_resource path="res://Game/Scenes/Piece.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Art/Yellow Pentagon 1.png" type="Texture" id=2]
 
+
 [node name="Yellow Pentagon" groups=["Yellow"] instance=ExtResource( 1 )]
 color = "Charisma"
 

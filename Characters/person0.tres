@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://Characters/Character.gd" type="Script" id=1]
+[ext_resource path="res://Characters/person0/person0_happy.png" type="Texture" id=2]
+[ext_resource path="res://Characters/person0/person0_curious.png" type="Texture" id=3]
+[ext_resource path="res://Characters/person0/person0_surprise.png" type="Texture" id=4]
+[ext_resource path="res://Characters/person0/person0_angry.png" type="Texture" id=5]
+[ext_resource path="res://Characters/person0/person0_normal.png" type="Texture" id=6]
+[ext_resource path="res://Characters/person0/person0_worried.png" type="Texture" id=7]
+
+[resource]
+script = ExtResource( 1 )
+id = "person0"
+display_name = "Kto-to"
+bio = "Fill this with the character's complete bio. Supports BBCode."
+age = 0
+default_image = "normal"
+images = {
+"angry": ExtResource( 5 ),
+"curious": ExtResource( 3 ),
+"happy": ExtResource( 2 ),
+"normal": ExtResource( 6 ),
+"surprise": ExtResource( 4 ),
+"worried": ExtResource( 7 )
+}

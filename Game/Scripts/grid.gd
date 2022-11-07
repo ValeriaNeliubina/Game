@@ -18,12 +18,13 @@ var piece = null;
 var new_position = Vector2(0,0);
 
 # Piece Stuff
-var possible_pieces = [preload("res://Game/Scenes/Yellow Pentagon.tscn"),
-preload("res://Game/Scenes/Teal Star.tscn"),
-preload("res://Game/Scenes/Red Circle.tscn"),
-preload("res://Game/Scenes/Orange Triangle.tscn"),
-preload("res://Game/Scenes/Shvax Cloud.tscn"),
-preload("res://Game/Scenes/Green Diamond.tscn")
+var possible_pieces = [
+	preload("res://Game/Scenes/Charisma.tscn"),
+	preload("res://Game/Scenes/Luck.tscn"),
+	preload("res://Game/Scenes/Dumb.tscn"),
+	preload("res://Game/Scenes/Know.tscn"),
+	preload("res://Game/Scenes/Inteligance.tscn"),
+	preload("res://Game/Scenes/Zubr.tscn")
 ]
 
 var _player: AudioStreamPlayer
@@ -112,6 +113,7 @@ func is_in_grid(touch_position):
 	return false;
 
 func swap_pieces(column, row, direction):
+	emit_signal("step", 1);
 	var first_piece = all_pieces[column][row];
 	var other_piece = all_pieces[column + direction.x][row + direction.y];
 	all_pieces[column + direction.x][row + direction.y] = first_piece;
@@ -122,7 +124,6 @@ func swap_pieces(column, row, direction):
 
 func touch_difference(first_touch, final_touch):
 	_steps += 1;
-	emit_signal("step", 1);
 	var difference = final_touch - first_touch;
 	if(abs(difference.x) > abs(difference.y)):
 		if(difference.x > 0):
@@ -173,8 +174,8 @@ func destroy_matched():
 	collapse_columns(destroyed);
 
 func collapse_columns(destroyed: bool):
-	if destroyed:
-		play_sound()
+	#if destroyed:
+		#play_sound()
 	for i in width:
 		for j in height:
 			if(all_pieces[i][j] == null):
@@ -233,7 +234,7 @@ func _on_refill_timer_timeout():
 
 func play_sound() -> void:
 	if !_player.playing:
-		_player.stream = load("res://Sounds/es-minus-ehuuu.wav")
+		_player.stream = load("res://Sounds/nea.wav")
 		_player.play()
 
 func process_color(color) -> void:

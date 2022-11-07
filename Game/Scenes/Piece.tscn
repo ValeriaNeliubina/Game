@@ -1,17 +1,45 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Game/Scripts/Piece.gd" type="Script" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+export (String) var color;
+onready var effect = get_node(\"movement_tween\");
+var is_matched;
+var target_position = Vector2(0,0);
+
+func _ready():
+
+	pass
+
+func _process(delta):
+	#if(is_matched):
+		#queue_free();
+	pass
+
+func move_piece(change):
+	target_position = position + change;
+	print(position, name, target_position);
+	effect.interpolate_property(self, \"position\",
+				position, target_position, .4,
+				Tween.TRANS_ELASTIC, Tween.EASE_OUT);
+	effect.start();
+	pass;
+
+
+func _on_movement_tween_tween_completed(object, key):
+	print(position, name);
+	pass # replace with function body
+"
 
 [node name="Piece" type="Node2D" index="0"]
-
-script = ExtResource( 1 )
+script = SubResource( 1 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 color = null
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 [node name="movement_tween" type="Tween" parent="." index="1"]
-
 repeat = false
 playback_process_mode = 1
 playback_speed = 1.0
@@ -21,5 +49,3 @@ playback/speed = 1.0
 _sections_unfolded = [ "playback" ]
 
 [connection signal="tween_completed" from="movement_tween" to="." method="_on_movement_tween_tween_completed"]
-
-

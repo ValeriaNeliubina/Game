@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Game/Scripts/Piece.gd" type="Script" id=1]
+[ext_resource path="res://Game/Art/Charisma(2).png" type="Texture" id=2]
+
+[node name="Charisma" type="Node2D"]
+script = ExtResource( 1 )
+color = "Charisma"
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 2 )
+
+[node name="movement_tween" type="Tween" parent="."]
+
+[connection signal="tween_completed" from="movement_tween" to="." method="_on_movement_tween_tween_completed"]

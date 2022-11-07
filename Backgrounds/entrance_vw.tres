@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Backgrounds/Background.gd" type="Script" id=1]
+[ext_resource path="res://Backgrounds/Images/entrance_vw.JPG" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+id = "entrance_vw"
+display_name = "entrance_vw"
+texture = ExtResource( 2 )

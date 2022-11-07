@@ -64,6 +64,7 @@ _global_script_class_icons={
 
 config/name="2D Visual Novel"
 run/main_scene="res://Main.tscn"
+boot_splash/image="res://Characters/person0/person0_happy.png"
 config/icon="res://Characters/icon.png"
 
 [autoload]

@@ -2,6 +2,7 @@
 
 [ext_resource path="res://Game/Art/Piece Background.png" type="Texture" id=1]
 
+
 [node name="Piece Background" type="Node2D" index="0"]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]

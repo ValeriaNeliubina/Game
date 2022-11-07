@@ -1,9 +1,9 @@
-background univer fade_in
+background entrance fade_in
 
-sophia neutral enter left "Ну что? Как сдал сессию? Есть долги?"
+person0 normal enter left "Ну что? Как сдал сессию? Есть долги?"
 dani neutral enter right "Все отлично. Я как обычно купил все работы и закрыл сессию."
 dani "А ты как?"
-sophia sad "Ну… у меня не так все радужно. В этот раз много долгов. Вот сейчас пойду в деканат забирать ИГППА."
+person0 worried "Ну… у меня не так все радужно. В этот раз много долгов. Вот сейчас пойду в деканат забирать ИГППА."
 dani happy "Да забей. Потом сходишь, пойдем лучше в кафешку."
 
 choice:
@@ -19,7 +19,7 @@ clear
 
 background dekanat fade_in
 
-sophia neutral enter left "Здравствуйте, можно ли мне забрать ИГППА?"
+person0 normal enter left "Здравствуйте, можно ли мне забрать ИГППА?"
 billy neutrl enter right "Здравствуйте, конечно. Скажите фамилию и группу"
 
 mark before_game_start
@@ -57,8 +57,8 @@ background dekanat fade_in
 
 dani happy enter right "Ну что? Забрал ИГППА?"
 
-sophia sad enter left "Да..."
-sophia sad "Придется очень постараться."
+person0 worried enter left "Да..."
+person0 worried "Придется очень постараться."
 
 dani happy "А пошли лучше в клуб! Расслабишься и успокоишься, а с понедельника начнешь готовиться."
 

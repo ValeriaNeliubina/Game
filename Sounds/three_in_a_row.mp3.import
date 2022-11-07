@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/three_in_a_row.mp3-b586ad3ac446f56f0e474a985bc0eb8f.mp3str"
+
+[deps]
+
+source_file="res://Sounds/three_in_a_row.mp3"
+dest_files=[ "res://.import/three_in_a_row.mp3-b586ad3ac446f56f0e474a985bc0eb8f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

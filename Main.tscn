@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Game/Scripts/grid.gd" type="Script" id=2]
@@ -7,7 +7,14 @@
 [ext_resource path="res://Game/Art/Bottom UI v 2.png" type="Texture" id=5]
 [ext_resource path="res://Game/Scripts/Game.gd" type="Script" id=6]
 [ext_resource path="res://Theme/montserrat_extrabold.tres" type="DynamicFont" id=7]
-[ext_resource path="res://Game/Art/Pink Circle.png" type="Texture" id=8]
+[ext_resource path="res://Game/Art/tip.png" type="Texture" id=8]
+[ext_resource path="res://TextBox/text-box.png" type="Texture" id=9]
+[ext_resource path="res://TextBox/Art/0.png" type="Texture" id=10]
+[ext_resource path="res://Game/Scripts/ScrolInput.gd" type="Script" id=11]
+[ext_resource path="res://Game/Art/5.png" type="Texture" id=12]
+[ext_resource path="res://Game/Art/0.png" type="Texture" id=13]
+[ext_resource path="res://Game/Art/3.png" type="Texture" id=14]
+[ext_resource path="res://Game/Art/4.png" type="Texture" id=15]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -60,13 +67,14 @@ one_shot = true
 volume_db = -10.781
 
 [node name="ScoreNode" type="Node2D" parent="Node2D"]
-z_index = 1004
+z_index = 1005
 
 [node name="ScoreLabel" type="Label" parent="Node2D/ScoreNode"]
-margin_left = 503.0
-margin_top = 67.0
-margin_right = 817.0
-margin_bottom = 195.0
+margin_left = 863.0
+margin_top = 933.0
+margin_right = 1177.0
+margin_bottom = 1061.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 7 )
 text = "Score"
 align = 1
@@ -74,13 +82,14 @@ valign = 1
 
 [node name="StepNode" type="Node2D" parent="Node2D"]
 position = Vector2( 194, 104 )
-z_index = 1004
+z_index = 1005
 
 [node name="StepLabel" type="Label" parent="Node2D/StepNode"]
-margin_left = 1018.0
-margin_top = -6.50004
-margin_right = 1150.0
-margin_bottom = 62.5
+margin_left = 861.265
+margin_top = 800.0
+margin_right = 993.265
+margin_bottom = 869.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 7 )
 text = "Step"
 
@@ -88,28 +97,63 @@ text = "Step"
 z_index = 1004
 
 [node name="YellowLabel" type="Label" parent="Node2D/ColorNode"]
-margin_left = 158.0
-margin_top = 254.0
-margin_right = 315.0
-margin_bottom = 309.0
+margin_left = 92.0
+margin_top = 108.0
+margin_right = 328.0
+margin_bottom = 265.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 7 )
-text = "Харизма:"
+text = "Харизма: "
 
-[node name="ArtifactNode" type="Sprite" parent="Node2D"]
-position = Vector2( 1558, 418 )
+[node name="BG" type="Sprite" parent="Node2D/ColorNode"]
+position = Vector2( 192, 122.75 )
+scale = Vector2( 0.145, 0.408 )
+texture = ExtResource( 9 )
+
+[node name="GameMusicPlayer" type="AudioStreamPlayer" parent="Node2D"]
+
+[node name="BottomPanel" type="Sprite" parent="Node2D"]
+position = Vector2( 957, 1019 )
 z_index = 1004
+texture = ExtResource( 9 )
+
+[node name="ScrolInput" type="Sprite" parent="Node2D/BottomPanel"]
+position = Vector2( 0, -6 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 10 )
+script = ExtResource( 11 )
+images = {
+0: ExtResource( 13 ),
+3: ExtResource( 14 ),
+4: ExtResource( 15 ),
+5: ExtResource( 12 )
+}
+
+[node name="ArtifactPanel" type="Node2D" parent="Node2D"]
+z_index = 1004
+
+[node name="ArtifactNode" type="Sprite" parent="Node2D/ArtifactPanel"]
+position = Vector2( 203, 376 )
+scale = Vector2( 0.408889, 0.359375 )
+z_index = 1005
 texture = ExtResource( 8 )
 script = ExtResource( 4 )
 code = "artifact"
 
-[node name="ArtifactLabel" type="Label" parent="Node2D/ArtifactNode"]
-margin_left = -128.0
-margin_top = 78.0
-margin_right = 159.0
-margin_bottom = 191.0
+[node name="ArtifactLabel" type="Label" parent="Node2D/ArtifactPanel/ArtifactNode"]
+margin_left = -180.979
+margin_top = 256.0
+margin_right = 135.021
+margin_bottom = 448.0
 custom_fonts/font = ExtResource( 7 )
-text = "Артефакт"
+text = "Линейка
+"
 align = 1
+
+[node name="BG" type="Sprite" parent="Node2D/ArtifactPanel"]
+position = Vector2( 192, 509 )
+scale = Vector2( 0.144914, 2.04169 )
+texture = ExtResource( 9 )
 
 [node name="AmbientPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -10.146

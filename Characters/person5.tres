@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://Characters/Character.gd" type="Script" id=1]
+[ext_resource path="res://Characters/person5/person5_happy.png" type="Texture" id=2]
+[ext_resource path="res://Characters/person5/person5_laugh.png" type="Texture" id=3]
+[ext_resource path="res://Characters/person5/person5_sad.png" type="Texture" id=4]
+[ext_resource path="res://Characters/person5/person5_surprise.png" type="Texture" id=5]
+[ext_resource path="res://Characters/person5/person5_angry.png" type="Texture" id=6]
+[ext_resource path="res://Characters/person5/person5_normal.png" type="Texture" id=7]
+
+[resource]
+script = ExtResource( 1 )
+id = "person5"
+display_name = "Person 5"
+bio = "Fill this with the character's complete bio. Supports BBCode."
+age = 0
+default_image = "normal"
+images = {
+"angry": ExtResource( 6 ),
+"happy": ExtResource( 2 ),
+"laugh": ExtResource( 3 ),
+"normal": ExtResource( 7 ),
+"sad": ExtResource( 4 ),
+"surprise": ExtResource( 5 )
+}
