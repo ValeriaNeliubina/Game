@@ -90,7 +90,7 @@ z_index = 1004
 [node name="YellowLabel" type="Label" parent="Node2D/ColorNode"]
 margin_left = 158.0
 margin_top = 254.0
-margin_right = 381.0
+margin_right = 315.0
 margin_bottom = 309.0
 custom_fonts/font = ExtResource( 7 )
 text = "Харизма:"

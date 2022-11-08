@@ -3,7 +3,7 @@ extends Node
 export (Array, String, FILE) var scripts
 
 const ScenePlayer := preload("res://ScenePlayer.tscn")
-const Pause := preload("res://Pause.tscn")
+
 const SCENES := []
 
 var _current_index := -1
@@ -18,8 +18,6 @@ var _soundPlayer: AudioStreamPlayer
 
 onready var gameNode: Node2D = get_node("Node2D")
 var inGame: bool = false
-
-
 
 func _ready() -> void:
 	_connect_signals()
@@ -43,11 +41,7 @@ func _ready() -> void:
 
 		_play_scene(0)
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		var pause_menu = Pause.instance()
-		add_child(pause_menu)
-		
+
 func _play_scene(index: int) -> void:
 	_current_index = int(clamp(index, 0.0, SCENES.size() - 1))
 
@@ -65,6 +59,7 @@ func _play_scene(index: int) -> void:
 
 func _connect_signals() -> void:
 	#get_node("Node2D/WinButton").connect("button_pressed", self, "_on_game_end")
+	get_node("Node2D/LoseButton").connect("button_pressed", self, "_on_game_end")
 	get_node("Node2D").connect("game_finished", self, "game_finished")
 
 func _on_ScenePlayer_scene_finished() -> void:

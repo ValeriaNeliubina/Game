@@ -23,7 +23,6 @@ onready var _text_box := $TextBox
 onready var _character_displayer := $CharacterDisplayer
 onready var _anim_player: AnimationPlayer = $FadeAnimationPlayer
 onready var _background := $Background
-# warning-ignore:unused_argument
 
 func run_scene(key) -> void:
 	while key != KEY_END_OF_SCENE:
@@ -155,8 +154,26 @@ func run_scene(key) -> void:
 			key = node.next
 
 	_character_displayer.hide()
-	emit_signal("scene_finished")
 
+
+# test Progress file
+	Progress.next_part()
+	Progress.to_save()
+	Progress.to_load()
+	Progress.add_score(5)
+	Progress.to_save()
+	Progress.to_load()
+	Progress.add_artifact("fig")
+	Progress.add_score(-3)
+	Progress.next_part()
+	Progress.to_save()
+	Progress.to_load()
+	Progress.drop_artifact("fig")
+	Progress.add_artifact("milk")
+	Progress.to_save()
+	Progress.to_load()
+	emit_signal("scene_finished")
+# end test
 
 func _start_game(mode: String, nextKey, win_score) -> void:
 	emit_signal("open_game", mode, nextKey, win_score)
@@ -181,7 +198,6 @@ func _disappear_async() -> void:
 
 
 ## Saves a dictionary representing a scene to the disk using `var2str`.
-# warning-ignore:unused_argument
 func _store_scene_data(data: Dictionary, path: String) -> void:
 	var file := File.new()
 	file.open(path, File.WRITE)
