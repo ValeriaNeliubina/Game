@@ -23,6 +23,7 @@ onready var _text_box := $TextBox
 onready var _character_displayer := $CharacterDisplayer
 onready var _anim_player: AnimationPlayer = $FadeAnimationPlayer
 onready var _background := $Background
+# warning-ignore:unused_argument
 
 func run_scene(key) -> void:
 	while key != KEY_END_OF_SCENE:
@@ -180,6 +181,7 @@ func _disappear_async() -> void:
 
 
 ## Saves a dictionary representing a scene to the disk using `var2str`.
+# warning-ignore:unused_argument
 func _store_scene_data(data: Dictionary, path: String) -> void:
 	var file := File.new()
 	file.open(path, File.WRITE)
