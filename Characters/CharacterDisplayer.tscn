@@ -11,11 +11,13 @@ __meta__ = {
 }
 
 [node name="Left" type="Sprite" parent="."]
-position = Vector2( 330.836, 655.203 )
+position = Vector2( 326.46, 712.927 )
+scale = Vector2( 0.906418, 0.854022 )
 texture = ExtResource( 3 )
 
 [node name="Right" type="Sprite" parent="."]
-position = Vector2( 1592.01, 655.203 )
+position = Vector2( 1469, 680 )
+scale = Vector2( 1.08889, 0.926352 )
 texture = ExtResource( 2 )
 flip_h = true
 
