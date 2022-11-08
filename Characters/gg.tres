@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://TextBox/Art/Empty.png" type="Texture" id=1]
+[ext_resource path="res://Characters/Character.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+id = "gg"
+display_name = "ГГ"
+bio = "Fill this with the character's complete bio. Supports BBCode."
+age = 0
+default_image = "normal"
+images = {
+"normal": ExtResource( 1 )
+}

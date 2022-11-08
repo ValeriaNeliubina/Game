@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Game/Scripts/grid.gd" type="Script" id=2]
@@ -8,13 +8,15 @@
 [ext_resource path="res://Game/Scripts/Game.gd" type="Script" id=6]
 [ext_resource path="res://Theme/montserrat_extrabold.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Game/Art/tip.png" type="Texture" id=8]
-[ext_resource path="res://TextBox/text-box.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/harizma.png" type="Texture" id=9]
 [ext_resource path="res://TextBox/Art/0.png" type="Texture" id=10]
 [ext_resource path="res://Game/Scripts/ScrolInput.gd" type="Script" id=11]
 [ext_resource path="res://Game/Art/5.png" type="Texture" id=12]
 [ext_resource path="res://Game/Art/0.png" type="Texture" id=13]
 [ext_resource path="res://Game/Art/3.png" type="Texture" id=14]
 [ext_resource path="res://Game/Art/4.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Tip.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Dialog.png" type="Texture" id=17]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -25,6 +27,7 @@ visible = false
 script = ExtResource( 6 )
 
 [node name="LoseButton" type="Sprite" parent="Node2D"]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.494118 )
 position = Vector2( 980, 130.5 )
 scale = Vector2( 0.604167, 1.22826 )
@@ -49,10 +52,10 @@ align = 1
 z_index = 4000
 script = ExtResource( 2 )
 width = 8
-height = 10
-xStart = 735
-yStart = 850
-offset = 64
+height = 8
+xStart = 535
+yStart = 700
+offset = 80
 background = ExtResource( 3 )
 
 [node name="find_matches" type="Timer" parent="Node2D/grid"]
@@ -70,10 +73,10 @@ volume_db = -10.781
 z_index = 1005
 
 [node name="ScoreLabel" type="Label" parent="Node2D/ScoreNode"]
-margin_left = 863.0
-margin_top = 933.0
-margin_right = 1177.0
-margin_bottom = 1061.0
+margin_left = 875.0
+margin_top = 857.0
+margin_right = 1189.0
+margin_bottom = 985.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 7 )
 text = "Score"
@@ -85,16 +88,17 @@ position = Vector2( 194, 104 )
 z_index = 1005
 
 [node name="StepLabel" type="Label" parent="Node2D/StepNode"]
-margin_left = 861.265
-margin_top = 800.0
-margin_right = 993.265
-margin_bottom = 869.0
+margin_left = 875.0
+margin_top = 740.0
+margin_right = 1007.0
+margin_bottom = 809.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 7 )
 text = "Step"
 
 [node name="ColorNode" type="Node2D" parent="Node2D"]
-z_index = 1004
+z_index = 1005
+z_as_relative = false
 
 [node name="YellowLabel" type="Label" parent="Node2D/ColorNode"]
 margin_left = 92.0
@@ -106,16 +110,18 @@ custom_fonts/font = ExtResource( 7 )
 text = "Харизма: "
 
 [node name="BG" type="Sprite" parent="Node2D/ColorNode"]
-position = Vector2( 192, 122.75 )
-scale = Vector2( 0.145, 0.408 )
+position = Vector2( 196, 123.5 )
+scale = Vector2( 1.69412, 1.15238 )
+z_as_relative = false
 texture = ExtResource( 9 )
 
 [node name="GameMusicPlayer" type="AudioStreamPlayer" parent="Node2D"]
 
 [node name="BottomPanel" type="Sprite" parent="Node2D"]
-position = Vector2( 957, 1019 )
+position = Vector2( 961, 943 )
+scale = Vector2( 1.00886, 1 )
 z_index = 1004
-texture = ExtResource( 9 )
+texture = ExtResource( 17 )
 
 [node name="ScrolInput" type="Sprite" parent="Node2D/BottomPanel"]
 position = Vector2( 0, -6 )
@@ -151,9 +157,9 @@ text = "Линейка
 align = 1
 
 [node name="BG" type="Sprite" parent="Node2D/ArtifactPanel"]
-position = Vector2( 192, 509 )
-scale = Vector2( 0.144914, 2.04169 )
-texture = ExtResource( 9 )
+position = Vector2( 232, 504 )
+scale = Vector2( 1.65957, 1.07942 )
+texture = ExtResource( 16 )
 
 [node name="AmbientPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -10.146

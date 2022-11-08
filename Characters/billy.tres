@@ -3,6 +3,7 @@
 [ext_resource path="res://20201108_woman 1.png" type="Texture" id=1]
 [ext_resource path="res://Characters/Character.gd" type="Script" id=2]
 
+
 [resource]
 script = ExtResource( 2 )
 id = "billy"

@@ -174,8 +174,8 @@ func destroy_matched():
 	collapse_columns(destroyed);
 
 func collapse_columns(destroyed: bool):
-	#if destroyed:
-		#play_sound()
+	if destroyed:
+		play_sound()
 	for i in width:
 		for j in height:
 			if(all_pieces[i][j] == null):

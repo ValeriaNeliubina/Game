@@ -4,6 +4,7 @@
 [ext_resource path="res://Game/Art/dumb_answer (1).png" type="Texture" id=2]
 
 [node name="Dumb" type="Node2D"]
+scale = Vector2( 1.25, 1.25 )
 script = ExtResource( 1 )
 color = "Dumb"
 

@@ -7,6 +7,7 @@
 [ext_resource path="res://Characters/person1/person1_smile.png" type="Texture" id=5]
 [ext_resource path="res://Characters/person1/person1_sad_1.png" type="Texture" id=6]
 
+
 [resource]
 script = ExtResource( 1 )
 id = "person1"
