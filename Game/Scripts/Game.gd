@@ -26,6 +26,7 @@ func _connect_signals():
 func add_score(count, color):
 	_score += count;
 	_scoreLabel.text = "Счет: " + String(_score);
+	
 	if (color == "Charisma"):
 		_yellow += count;
 		update_artifact_visible()
@@ -48,7 +49,6 @@ func start_game(win_score: int) -> void:
 	_score = 0;
 	_step = 0;
 	_yellow = 0;
-	
 	_win_score = win_score;
 	_scoreLabel.text = "Счет: " + String(_score);
 	_stepLabel.text = String(_win_score - _step);

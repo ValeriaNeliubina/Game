@@ -1,0 +1,176 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Fonts/Montserrat-VariableFont_wght.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/Caveat.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Backgrounds/Menu.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Button.png" type="Texture" id=4]
+[ext_resource path="res://Scene/Menu.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 110
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+outline_size = 1
+font_data = ExtResource( 1 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
+
+[node name="Label" type="Label" parent="Buttons"]
+margin_left = 552.0
+margin_right = 1367.0
+margin_bottom = 281.0
+rect_min_size = Vector2( 800, 140 )
+input_pass_on_modal_close_click = false
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+text = "Кузнец своего счастья
+"
+align = 1
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Buttons"]
+margin_top = 285.0
+margin_right = 1920.0
+margin_bottom = 1009.0
+custom_constants/separation = 300
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons/VBoxContainer2"]
+margin_right = 1920.0
+margin_bottom = 343.0
+custom_constants/separation = 50
+
+[node name="NewGame" type="TextureButton" parent="Buttons/VBoxContainer2/VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.619608 )
+margin_left = 675.0
+margin_right = 1245.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 570, 81 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Buttons/VBoxContainer2/VBoxContainer/NewGame"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.5
+margin_top = -33.0
+margin_right = 140.5
+margin_bottom = 61.5
+size_flags_horizontal = 5
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Новая игра
+"
+align = 1
+valign = 1
+
+[node name="Continue" type="TextureButton" parent="Buttons/VBoxContainer2/VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.619608 )
+margin_left = 675.0
+margin_top = 131.0
+margin_right = 1245.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 570, 81 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Buttons/VBoxContainer2/VBoxContainer/Continue"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.5
+margin_top = -33.0
+margin_right = 140.5
+margin_bottom = 61.5
+size_flags_horizontal = 5
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Продолжить
+"
+align = 1
+valign = 1
+
+[node name="Autors" type="TextureButton" parent="Buttons/VBoxContainer2/VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.619608 )
+margin_left = 675.0
+margin_top = 262.0
+margin_right = 1245.0
+margin_bottom = 343.0
+rect_min_size = Vector2( 570, 81 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Buttons/VBoxContainer2/VBoxContainer/Autors"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.5
+margin_top = -33.0
+margin_right = 140.5
+margin_bottom = 61.5
+size_flags_horizontal = 5
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Авторы
+"
+align = 1
+valign = 1
+
+[node name="Exit" type="TextureButton" parent="Buttons/VBoxContainer2"]
+self_modulate = Color( 1, 1, 1, 0.619608 )
+margin_left = 675.0
+margin_top = 643.0
+margin_right = 1245.0
+margin_bottom = 724.0
+rect_min_size = Vector2( 570, 81 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Buttons/VBoxContainer2/Exit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.5
+margin_top = -33.0
+margin_right = 140.5
+margin_bottom = 61.5
+size_flags_horizontal = 5
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Выход
+"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="Buttons/VBoxContainer2/VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer2/Exit" to="." method="_on_Exit_pressed"]
