@@ -173,4 +173,5 @@ align = 1
 valign = 1
 
 [connection signal="pressed" from="Buttons/VBoxContainer2/VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer2/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer2/Exit" to="." method="_on_Exit_pressed"]

@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ScenePlayer.gd"
 }, {
+"base": "Resource",
+"class": "SceneRes",
+"language": "GDScript",
+"path": "res://Scene/SceneRes/SceneRes.gd"
+}, {
 "base": "Reference",
 "class": "SceneTranspiler",
 "language": "GDScript",
@@ -57,6 +62,7 @@ _global_script_class_icons={
 "SceneLexer": "",
 "SceneParser": "",
 "ScenePlayer": "",
+"SceneRes": "",
 "SceneTranspiler": ""
 }
 
@@ -64,12 +70,14 @@ _global_script_class_icons={
 
 config/name="2D Visual Novel"
 run/main_scene="res://Scene/Menu.tscn"
-config/icon="res://Characters/icon.png"
+boot_splash/image="res://Sprites/BfFiq1jKmRk.png"
+config/icon="res://Sprites/BfFiq1jKmRk.png"
 
 [autoload]
 
 ResourceDB="*res://Autoloads/ResourceDB.gd"
 Variables="*res://Autoloads/Variables.gd"
+Progress="*res://Save/Progress.gd"
 
 [debug]
 

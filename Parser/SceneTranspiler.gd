@@ -193,6 +193,15 @@ class AudioCommandNode:
 		self.track = track
 		self.next = next
 
+class SaveCommandNode:
+	extends BaseNode
+	
+	var point: String = ""
+	
+	func _init(next: int, point: String).(next) -> void:
+		self.next = next
+		self.point = point
+
 ## Node type for a command that will break out of any running code block.
 class PassCommandNode:
 	extends BaseNode
@@ -415,8 +424,13 @@ func _transpile_command(dialogue_tree: DialogueTree, expression: SceneParser.Bas
 		if (expression.arguments.size() > 1):
 			count = int(expression.arguments[1].value)
 		command_node = KarmaCommandNode.new(dialogue_tree.index + 1, operation, count)
+	
 	elif expression.value == SceneLexer.BUILT_IN_COMMANDS.CLEAR:
 		command_node = ClearCommandNode.new(dialogue_tree.index + 1)
+	
+	elif expression.value == SceneLexer.BUILT_IN_COMMANDS.SAVE:
+		var point = expression.arguments[0].value
+		command_node = SaveCommandNode.new(dialogue_tree.index + 1, point)
 	else:
 		push_error("Unrecognized command type `%s`" % expression.value)
 

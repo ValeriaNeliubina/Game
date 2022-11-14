@@ -22,7 +22,7 @@ audio ambient stop "a_street.mp3"
 
 clear
 
-save "test"
+save "test2"
 
 audio ambient play "a_noise.mp3"
 
