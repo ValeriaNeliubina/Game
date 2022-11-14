@@ -112,6 +112,7 @@ text = "Харизма: "
 [node name="BG" type="Sprite" parent="Node2D/ColorNode"]
 position = Vector2( 196, 123.5 )
 scale = Vector2( 1.69412, 1.15238 )
+z_index = 1004
 z_as_relative = false
 texture = ExtResource( 9 )
 
@@ -162,7 +163,6 @@ scale = Vector2( 1.65957, 1.07942 )
 texture = ExtResource( 16 )
 
 [node name="AmbientPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -10.146
 
 [node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -10.78

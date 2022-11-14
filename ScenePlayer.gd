@@ -25,9 +25,20 @@ onready var _anim_player: AnimationPlayer = $FadeAnimationPlayer
 onready var _background := $Background
 # warning-ignore:unused_argument
 
-func run_scene(key) -> void:
+func run_scene(key, save_name) -> void:
+	
+	var save_loaded: bool = false
+	
 	while key != KEY_END_OF_SCENE:
+		
 		var node: SceneTranspiler.BaseNode = _scene_data[key]
+
+		if save_name != "" and not save_loaded:
+			if node is SceneTranspiler.SaveCommandNode and node.point == save_name:
+				save_loaded = true
+			key = node.next
+			continue
+		
 		var character: Character = (
 			ResourceDB.get_character(node.character)
 			if "character" in node and node.character != ""
@@ -102,6 +113,11 @@ func run_scene(key) -> void:
 			_character_displayer._ready()
 			_text_box._ready()
 			key = node.next
+			continue
+		
+		elif node is SceneTranspiler.SaveCommandNode:
+			key = node.next
+			save(node.point)
 			continue
 
 		# Choices.
@@ -195,3 +211,9 @@ func show_text_box():
 func hide_text_box():
 	yield(_text_box.fade_out_async(), "completed");
 	_text_box.visible = false;
+
+func save(point: String):
+	print("New save " + point)
+	Progress.save_point(point)
+	Progress.to_save()
+	return
