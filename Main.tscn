@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Game/Scripts/grid.gd" type="Script" id=2]
@@ -17,6 +17,36 @@
 [ext_resource path="res://Game/Art/4.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/Tip.png" type="Texture" id=16]
 [ext_resource path="res://Sprites/Dialog.png" type="Texture" id=17]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -146,6 +176,8 @@ z_index = 1005
 texture = ExtResource( 8 )
 script = ExtResource( 4 )
 code = "artifact"
+artifact = "line"
+price = 5
 
 [node name="ArtifactLabel" type="Label" parent="Node2D/ArtifactPanel/ArtifactNode"]
 margin_left = -180.979
@@ -161,6 +193,10 @@ align = 1
 position = Vector2( 232, 504 )
 scale = Vector2( 1.65957, 1.07942 )
 texture = ExtResource( 16 )
+
+[node name="GameAnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+anims/fade_in = SubResource( 1 )
+anims/fade_out = SubResource( 2 )
 
 [node name="AmbientPlayer" type="AudioStreamPlayer" parent="."]
 

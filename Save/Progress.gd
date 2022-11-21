@@ -59,5 +59,8 @@ func drop_artifact(artifact):
 	else:
 		return false
 
+func has_artifact(artifact):
+	return data["artifacts"].find(artifact) > -1
+
 func save_point(point: String):
 	data["save"] = point

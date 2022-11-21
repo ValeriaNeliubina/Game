@@ -119,6 +119,11 @@ func run_scene(key, save_name) -> void:
 			key = node.next
 			save(node.point)
 			continue
+			
+		elif node is SceneTranspiler.ArtifactCommandNode:
+			key = node.next
+			Progress.add_artifact(node.artifact)
+			continue
 
 		# Choices.
 		elif node is SceneTranspiler.ChoiceTreeNode:

@@ -19,6 +19,7 @@ var new_position = Vector2(0,0);
 
 # Piece Stuff
 var possible_pieces = [
+	preload("res://Game/Scenes/Food_breake.tscn"),
 	preload("res://Game/Scenes/Charisma.tscn"),
 	preload("res://Game/Scenes/Luck.tscn"),
 	preload("res://Game/Scenes/Dumb.tscn"),
@@ -65,15 +66,15 @@ func generate_pieces():
 	for i in width:
 		for j in height:
 			var piece_to_use = round(rand_range(0, possible_pieces.size()));
-			if piece_to_use == 6:
-				piece_to_use = 5;
+			if piece_to_use == 7:
+				piece_to_use = 6;
 			var piece = possible_pieces[piece_to_use].instance();
 			
 			var loops = 0;
 			while check_for_matches(i,j, piece.color) && loops < 100:
 				piece_to_use = round(rand_range(0, possible_pieces.size()));
-				if piece_to_use == 6:
-					piece_to_use = 5;
+				if piece_to_use == 7:
+					piece_to_use = 6;
 				piece = possible_pieces[piece_to_use].instance();
 				loops += 1;
 			
@@ -193,15 +194,15 @@ func refill_columns():
 		for j in height:
 			if all_pieces[i][j] == null:
 				var piece_to_use = round(rand_range(0, possible_pieces.size()));
-				if piece_to_use == 6:
-					piece_to_use = 5;
+				if piece_to_use == 7:
+					piece_to_use = 6;
 				var piece = possible_pieces[piece_to_use].instance();
 				
 				var loops = 0;
 				while check_for_matches(i,j, piece.color) && loops < 100:
 					piece_to_use = round(rand_range(0, possible_pieces.size()));
-					if piece_to_use == 6:
-						piece_to_use = 5;
+					if piece_to_use == 7:
+						piece_to_use = 6;
 					piece = possible_pieces[piece_to_use].instance();
 					loops += 1;
 				

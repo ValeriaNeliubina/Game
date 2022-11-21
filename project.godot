@@ -70,8 +70,8 @@ _global_script_class_icons={
 
 config/name="2D Visual Novel"
 run/main_scene="res://Scene/Menu.tscn"
-boot_splash/image="res://Sprites/BfFiq1jKmRk.png"
-config/icon="res://Sprites/BfFiq1jKmRk.png"
+boot_splash/image="res://Sprites/HVYQHN3Kie8.png"
+config/icon="res://Sprites/Logo.png"
 
 [autoload]
 

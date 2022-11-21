@@ -10,6 +10,7 @@ onready var _stepLabel = get_node("StepNode/StepLabel");
 onready var _charismaLabel = get_node("ColorNode/YellowLabel");
 onready var _artifact = get_node("ArtifactPanel/ArtifactNode");
 onready var _bar = get_node("BottomPanel/ScrolInput")
+onready var _anim_player = get_node("GameAnimationPlayer")
 
 var _score = 0;
 var _win_score = 0;
@@ -33,17 +34,18 @@ func add_score(count, color):
 	
 	if (color == "Charisma"):
 		_charisma += count;
-		update_artifact_visible()
+	
+	if (color == "coffee"):
+		add_step(-1)
+	
+	update_artifact_visible()
 
 func update_artifact_visible() -> void:
 	_charismaLabel.text = "Харизма: " + String(_charisma);	
 	_bar.count = _charisma
 	_bar.update_bar(_charisma)
 	
-	if (_charisma >= 5):
-		_artifact.visible = true
-	else:
-		_artifact.visible = false
+	_artifact.change_visible(_charisma)
 
 func add_step(count):
 	_step += count;
@@ -59,21 +61,24 @@ func start_game(win_score: int) -> void:
 	_win_score = win_score;
 	_scoreLabel.text = "Счет: " + String(_score);
 	_stepLabel.text = "Осталось ходов: " + String(_win_score - _step);
+	_anim_player.play("fade_in")
 	visible = true;
 	_switch_music(true)
 
 func end_game() -> int:
+	_anim_player.play("fade_out")
+	yield(_anim_player, "animation_finished")
 	visible = false;
 	_switch_music(false)
 	return _score;
 
-func _button_pressed(code: String) -> void:
+func _button_pressed(code: String, artifact: String) -> void:
 	print(code);
 	if (code != "artifact"):
 		return
 	
-	if (_charisma >= 5):
-		add_score(-5, "Charisma")
+	if (_charisma >= _artifact.price):
+		add_score(-_artifact.price, "Charisma")
 		_grid.destroy_row(0);
 		update_artifact_visible()
 

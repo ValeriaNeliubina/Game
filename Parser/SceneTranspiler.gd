@@ -202,6 +202,16 @@ class SaveCommandNode:
 		self.next = next
 		self.point = point
 
+
+class ArtifactCommandNode:
+	extends BaseNode
+	
+	var artifact: String = ""
+	
+	func _init(next: int, artifact: String).(next) -> void:
+		self.next = next
+		self.artifact = artifact 
+
 ## Node type for a command that will break out of any running code block.
 class PassCommandNode:
 	extends BaseNode
@@ -431,6 +441,11 @@ func _transpile_command(dialogue_tree: DialogueTree, expression: SceneParser.Bas
 	elif expression.value == SceneLexer.BUILT_IN_COMMANDS.SAVE:
 		var point = expression.arguments[0].value
 		command_node = SaveCommandNode.new(dialogue_tree.index + 1, point)
+	
+	elif expression.value == SceneLexer.BUILT_IN_COMMANDS.ARTIFACT:
+		var artifact = expression.arguments[0].value
+		command_node = ArtifactCommandNode.new(dialogue_tree.index + 1, artifact)
+		
 	else:
 		push_error("Unrecognized command type `%s`" % expression.value)
 

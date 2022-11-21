@@ -271,9 +271,9 @@ anims/setup = SubResource( 3 )
 [node name="NameBackground" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = -535.0
-margin_top = 35.0
+margin_top = 40.0
 margin_right = -47.0
-margin_bottom = 153.0
+margin_bottom = 158.0
 mouse_filter = 2
 size_flags_horizontal = 4
 script = ExtResource( 8 )

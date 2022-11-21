@@ -15,7 +15,8 @@ const BUILT_IN_COMMANDS := {
 	KARMA = "karma",
 	CLEAR = "clear",
 	AUDIO = "audio",
-	SAVE = "save"
+	SAVE = "save",
+	ARTIFACT = "artifact"
 }
 const CONDITIONAL_STATEMENTS := ["if", "elif", "else"]
 const BOOLEAN_OPERATORS := ["and", "or", "not"]

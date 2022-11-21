@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Fonts/Montserrat-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Fonts/Caveat.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Backgrounds/Menu.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Button.png" type="Texture" id=4]
 [ext_resource path="res://Scene/Menu.gd" type="Script" id=5]
+[ext_resource path="res://Sounds/untitled.mp3" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 110
@@ -14,6 +15,126 @@ font_data = ExtResource( 2 )
 size = 48
 outline_size = 1
 font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Enlarge"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer2/Exit:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.05, 1.05 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Inlarge"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer2/Exit:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.05, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "autors_large"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer2/VBoxContainer/Autors:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.05, 1.05 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "autors_small"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer2/VBoxContainer/Autors:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.05, 1.05 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "continue_large"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer2/VBoxContainer/Continue:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.05, 1.05 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "continue_small"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer2/VBoxContainer/Continue:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.05, 1.05 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "new_large"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer2/VBoxContainer/NewGame:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.05, 1.05 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "new_small"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer2/VBoxContainer/NewGame:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.05, 1.05 ), Vector2( 1, 1 ) ]
+}
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -66,10 +187,12 @@ margin_left = 675.0
 margin_right = 1245.0
 margin_bottom = 81.0
 rect_min_size = Vector2( 570, 81 )
+rect_pivot_offset = Vector2( 285, 40 )
 size_flags_horizontal = 4
-size_flags_vertical = 0
+size_flags_vertical = 4
 shortcut_in_tooltip = false
 texture_normal = ExtResource( 4 )
+stretch_mode = 3
 
 [node name="Label" type="Label" parent="Buttons/VBoxContainer2/VBoxContainer/NewGame"]
 anchor_left = 0.5
@@ -95,6 +218,7 @@ margin_top = 131.0
 margin_right = 1245.0
 margin_bottom = 212.0
 rect_min_size = Vector2( 570, 81 )
+rect_pivot_offset = Vector2( 285, 40 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture_normal = ExtResource( 4 )
@@ -123,6 +247,7 @@ margin_top = 262.0
 margin_right = 1245.0
 margin_bottom = 343.0
 rect_min_size = Vector2( 570, 81 )
+rect_pivot_offset = Vector2( 285, 40 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture_normal = ExtResource( 4 )
@@ -151,6 +276,7 @@ margin_top = 643.0
 margin_right = 1245.0
 margin_bottom = 724.0
 rect_min_size = Vector2( 570, 81 )
+rect_pivot_offset = Vector2( 285, 40 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture_normal = ExtResource( 4 )
@@ -172,6 +298,29 @@ text = "Выход
 align = 1
 valign = 1
 
+[node name="ScaleAnimationPlayer" type="AnimationPlayer" parent="Buttons"]
+anims/Enlarge = SubResource( 4 )
+anims/Inlarge = SubResource( 3 )
+anims/autors_large = SubResource( 7 )
+anims/autors_small = SubResource( 8 )
+anims/continue_large = SubResource( 5 )
+anims/continue_small = SubResource( 6 )
+anims/new_large = SubResource( 9 )
+anims/new_small = SubResource( 10 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -6.976
+autoplay = true
+
+[connection signal="mouse_entered" from="Buttons/VBoxContainer2/VBoxContainer/NewGame" to="." method="_on_NewGame_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/VBoxContainer2/VBoxContainer/NewGame" to="." method="_on_NewGame_mouse_exited"]
 [connection signal="pressed" from="Buttons/VBoxContainer2/VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="mouse_entered" from="Buttons/VBoxContainer2/VBoxContainer/Continue" to="." method="_on_Continue_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/VBoxContainer2/VBoxContainer/Continue" to="." method="_on_Continue_mouse_exited"]
 [connection signal="pressed" from="Buttons/VBoxContainer2/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="mouse_entered" from="Buttons/VBoxContainer2/VBoxContainer/Autors" to="." method="_on_Autors_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/VBoxContainer2/VBoxContainer/Autors" to="." method="_on_Autors_mouse_exited"]
+[connection signal="mouse_entered" from="Buttons/VBoxContainer2/Exit" to="." method="_on_Exit_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/VBoxContainer2/Exit" to="." method="_on_Exit_mouse_exited"]
 [connection signal="pressed" from="Buttons/VBoxContainer2/Exit" to="." method="_on_Exit_pressed"]
