@@ -235,7 +235,7 @@ func _on_refill_timer_timeout():
 
 func play_sound() -> void:
 	if !_player.playing:
-		_player.stream = load("res://Sounds/nea.wav")
+		_player.stream = load("res://Sounds/a_row.wav")
 		_player.play()
 
 func process_color(color) -> void:

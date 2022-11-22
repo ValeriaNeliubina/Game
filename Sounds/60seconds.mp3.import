@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/60seconds.mp3-5692e6e996b8fd07b8b3d1aa4e8d38e4.mp3str"
+
+[deps]
+
+source_file="res://Sounds/60seconds.mp3"
+dest_files=[ "res://.import/60seconds.mp3-5692e6e996b8fd07b8b3d1aa4e8d38e4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

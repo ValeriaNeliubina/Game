@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Fonts/Montserrat-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Fonts/Caveat.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Sprites/Button.png" type="Texture" id=4]
 [ext_resource path="res://Scene/Menu.gd" type="Script" id=5]
 [ext_resource path="res://Sounds/untitled.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/a_button.wav" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 110
@@ -312,6 +313,14 @@ anims/new_small = SubResource( 10 )
 stream = ExtResource( 6 )
 volume_db = -6.976
 autoplay = true
+
+[node name="SoundStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -18.286
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 
 [connection signal="mouse_entered" from="Buttons/VBoxContainer2/VBoxContainer/NewGame" to="." method="_on_NewGame_mouse_entered"]
 [connection signal="mouse_exited" from="Buttons/VBoxContainer2/VBoxContainer/NewGame" to="." method="_on_NewGame_mouse_exited"]

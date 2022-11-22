@@ -8,11 +8,10 @@
 [ext_resource path="res://Characters/person3/person3_surprise.png" type="Texture" id=6]
 [ext_resource path="res://Characters/person3/person3_smile.png" type="Texture" id=7]
 
-
 [resource]
 script = ExtResource( 1 )
 id = "person3"
-display_name = "Person 3"
+display_name = "Радзинский К.В."
 bio = "Fill this with the character's complete bio. Supports BBCode."
 age = 0
 default_image = "normal"

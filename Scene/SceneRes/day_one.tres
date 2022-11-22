@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-scripts = [ "res://Scene/day_one.txt", "res://Scene/day_one_part_two.txt" ]
+scripts = [ "res://Scene/day_one.txt" ]
 name = "Day one"
 id = "day_one"

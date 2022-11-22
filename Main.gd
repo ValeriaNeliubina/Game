@@ -31,7 +31,7 @@ func load_module():
 	var module_id = Progress.current_module
 	
 	if module_id == "":
-		print("No cuurent module")
+		print("No current module")
 		return
 	
 	var module = ResourceDB.get_module(module_id)
