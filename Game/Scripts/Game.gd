@@ -30,6 +30,7 @@ func _connect_signals():
 
 func add_score(count, color):
 	_score += count;
+	_bar.set_count(_score)
 	_scoreLabel.text = "Счет: " + String(_score);
 	
 	if (color == "Charisma"):
@@ -41,9 +42,7 @@ func add_score(count, color):
 	update_artifact_visible()
 
 func update_artifact_visible() -> void:
-	_charismaLabel.text = "Харизма: " + String(_charisma);	
-	_bar.count = _charisma
-	_bar.update_bar(_charisma)
+	_charismaLabel.text = "Харизма: " + String(_charisma);
 	
 	_artifact.change_visible(_charisma)
 
